@@ -20,7 +20,7 @@ issues are forwarded to AWS to trigger SMS messaging.
 <br><br>
 
 # Design Diagram
-
+![](.README_images/overview-diagram.png)
 # FAQ
 Q. Why not use MQTT to connect to the different Raspberry Pis?<br>
 <br><br>
