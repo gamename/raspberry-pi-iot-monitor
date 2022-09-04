@@ -12,7 +12,7 @@
 
     - name: Print return information from the previous task
       ansible.builtin.debug:
-        msg: "ERROR: {{ temp.stdout_lines[0]}}"
+        msg: "ERROR: {{inventory_hostname}} exceeded temperature limit {{ temp.stdout_lines[0]}}"
 
     - name: Save temperature to facts
       ansible.builtin.set_fact:
