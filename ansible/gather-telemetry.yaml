@@ -11,9 +11,9 @@
       shell: vcgencmd measure_temp | grep --only-matching --extended-regexp "[0-9]{2}"
       register: temp
 
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: temp
+#     - name: Print return information from the previous task
+#       ansible.builtin.debug:
+#         var: temp
 
     - name: Save temperature to facts
       ansible.builtin.set_fact:
@@ -24,9 +24,9 @@
       shell: uptime --since | awk '{ printf $1 }'
       register: uptime_since
 
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: uptime_since
+#     - name: Print return information from the previous task
+#       ansible.builtin.debug:
+#         var: uptime_since
 
     - name: Save uptime to facts
       ansible.builtin.set_fact:
@@ -37,9 +37,9 @@
       shell: uptime | awk '{print $NF}'
       register: cpu_avg
 
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: cpu_avg
+#     - name: Print return information from the previous task
+#       ansible.builtin.debug:
+#         var: cpu_avg
 
     - name: Save CPU average
       ansible.builtin.set_fact:
@@ -50,9 +50,9 @@
       shell: df --human-readable --output=pcent . | tail -1 | grep --only-matching --extended-regexp "[0-9]+"
       register: disk_util
 
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: disk_util
+#     - name: Print return information from the previous task
+#       ansible.builtin.debug:
+#         var: disk_util
 
     - name: Save disk utilization
       ansible.builtin.set_fact:
