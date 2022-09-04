@@ -15,7 +15,7 @@ def calculate_elapsed_days(date_stamp):
     today = datetime.date.today()
     sample_date = datetime.date.fromisoformat(date_stamp)
     delta = today - sample_date
-    print("delta:", delta.days)
+    # print("delta:", delta.days)
     return delta.days
 
 
