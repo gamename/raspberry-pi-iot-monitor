@@ -7,7 +7,7 @@ import datetime
 def calculate_elapsed_days(date_stamp):
     date_format = "%Y-%m-%d"
     today = datetime.date.today()
-    sample_date = datetime.strptime(date_stamp, date_format)
+    sample_date = datetime.datetime.strptime(date_stamp, date_format)
     delta = sample_date - today
     return delta.days
 
