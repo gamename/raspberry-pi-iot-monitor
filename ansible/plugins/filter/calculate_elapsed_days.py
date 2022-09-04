@@ -2,7 +2,7 @@
 This is to convert a timestamp in the form of yyyy-mm-dd to the number of days since that timestamp.
 """
 
-from datetime import datetime
+import datetime
 
 def calculate_elapsed_days(date_stamp):
     date_format = "%Y-%m-%d"
