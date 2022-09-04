@@ -35,7 +35,7 @@ with open(args['output_csv'], mode='w') as csv_file:
     for host in hosts:
         writer.writerow(
             {
-                'hostname': str(host['hostname']).split('.')[0],
+                'host_name': str(host['host_name']).split('.')[0],
                 'boot_date': host['boot_date'],
                 'core_temperature': host['core_temperature'],
                 'cpu_average': host['cpu_average'],
