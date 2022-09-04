@@ -4,7 +4,14 @@ This is to convert a timestamp in the form of yyyy-mm-dd to the number of days s
 
 import datetime
 
+
 def calculate_elapsed_days(date_stamp):
+    """
+    Calculates the number of days since the given timestamp.
+    :param date_stamp:
+    :return:
+    """
+    print("date_stamp:", date_stamp)
     date_format = "%Y-%m-%d"
     today = datetime.date.today()
     sample_date = datetime.datetime.strptime(date_stamp, date_format)
