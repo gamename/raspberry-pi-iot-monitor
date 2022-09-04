@@ -1,0 +1,4 @@
+
+export ANSIBLE_FACT_PATH="./facts"
+export ANSIBLE_INVENTORY="./hosts"
+export ANSIBLE_HOST_KEY_CHECKING="False"
