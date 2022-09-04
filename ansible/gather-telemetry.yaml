@@ -30,7 +30,7 @@
     - name: Determine if we have not rebooted lately
       ansible.builtin.debug:
         msg: "ERROR: {{inventory_hostname}} exceeded max days since last reboot {{ uptime_in_days.stdout_lines[0]}}"
-      when: uptime_in_days.stdout_lines[0] > max_days_since_last_reboot
+      when: uptime_in_days.stdout_lines[0] | calculate_elapsed_days > max_days_since_last_reboot
 
 # CPU Utilization
     - name: Get cpu average
