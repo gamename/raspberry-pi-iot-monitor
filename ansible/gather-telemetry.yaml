@@ -4,6 +4,8 @@
   hosts: all
   gather_facts: true
   become: true
+  vars:
+      max_temperature: 60
 
   tasks:
     - name: Get on-board temperature
@@ -13,7 +15,7 @@
     - name: Print return information from the previous task
       ansible.builtin.debug:
         msg: "ERROR: {{inventory_hostname}} exceeded temperature limit {{ temp.stdout_lines[0]}}"
-      when: temp.stdout_lines[0] > '60'
+      when: temp.stdout_lines[0] > max_temperature
 
     - name: Save temperature to facts
       ansible.builtin.set_fact:
