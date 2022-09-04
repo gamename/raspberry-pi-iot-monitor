@@ -25,12 +25,12 @@
 # Uptime
     - name: Get uptime
       shell: uptime -s | awk '{ print $1 }'
-      register: uptime_in_days
+      register: boot_date | calculate_elapsed_days
 
     - name: Determine if we have not rebooted lately
       ansible.builtin.debug:
-        msg: "ERROR: {{inventory_hostname}} exceeded max days since last reboot {{ uptime_in_days.stdout_lines[0]}}"
-      when: uptime_in_days.stdout_lines[0] | calculate_elapsed_days > max_days_since_last_reboot
+        msg: "ERROR: {{inventory_hostname}} exceeded max days since last reboot {{ boot_date }}"
+      when: boot_date > max_days_since_last_reboot
 
 # CPU Utilization
     - name: Get cpu average
