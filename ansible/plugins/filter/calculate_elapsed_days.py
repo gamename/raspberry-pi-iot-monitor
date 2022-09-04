@@ -35,10 +35,9 @@ def test_calculate_elapsed_days():
     Tests the calculate_elapsed_days function
     :return: Nothing
     """
-    assert( calculate_elapsed_days(datetime.date.today().isoformat()) == 0)
-    assert( calculate_elapsed_days("2022-08-01") > 30)
+    assert (calculate_elapsed_days(datetime.date.today().isoformat()) == 0)
+    assert (calculate_elapsed_days("2022-08-01") > 30)
 
 
 if __name__ == "__main__":
     test_calculate_elapsed_days()
-
