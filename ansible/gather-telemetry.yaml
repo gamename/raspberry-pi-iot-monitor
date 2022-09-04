@@ -6,7 +6,7 @@
   become: false
   vars:
       max_temperature: '60'
-      max_days_since_last_reboot: '3'
+      max_days_since_last_reboot: '2'
       max_cpu_utilization: '80'
       max_disk_utilization: '1'
 
