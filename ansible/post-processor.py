@@ -20,6 +20,7 @@ for file in sorted(json_files):
     host_dict = {}
     with open(file) as f:
         data = json.load(f)
+        host_dict['host_name'] = data['ansible_nodename']
         host_dict['boot_date'] = data['boot_date']
         host_dict['core_temperature'] = data['core_temperature']
         host_dict['cpu_average'] = data['cpu_average']
@@ -28,7 +29,7 @@ for file in sorted(json_files):
 
 
 with open(args['output_csv'], mode='w') as csv_file:
-    fieldnames = ['hostname', 'boot_date', 'core_temperature', 'cpu_average', 'disk_utilization']
+    fieldnames = ['host_name', 'boot_date', 'core_temperature', 'cpu_average', 'disk_utilization']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
     for host in hosts:
