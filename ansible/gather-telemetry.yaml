@@ -24,7 +24,7 @@
 
 # Uptime
     - name: Get uptime
-      shell: awk '{print int($1/3600)}' /proc/uptime
+      shell: uptime -s | awk '{ print $1 }'
       register: uptime_in_days
 
     - name: Determine if we have not rebooted lately
