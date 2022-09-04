@@ -12,7 +12,7 @@
       register: temp
 
     - name: Save temperature to facts
-      set_fact:
+      ansible.builtin.set_fact:
         core_temperature: "{{ temp.stdout_lines }}"
         cacheable: yes
 
@@ -21,7 +21,7 @@
       register: uptime_since
 
     - name: Save uptime to facts
-      set_fact:
+      ansible.builtin.set_fact:
         boot_date: "{{ uptime_since.stdout_lines }}"
         cacheable: yes
 
@@ -30,7 +30,7 @@
       register: cpu_avg
 
     - name: Save CPU average
-      set_fact:
+      ansible.builtin.set_fact:
         cpu_average: "{{ cpu_avg.stdout_lines }}"
         cacheable: yes
 
@@ -39,7 +39,7 @@
       register: disk_util
 
     - name: Save disk utilization
-      set_fact:
+      ansible.builtin.set_fact:
         disk_utilization: "{{ disk_util.stdout_lines }}"
         cacheable: yes
 
