@@ -27,7 +27,7 @@
       shell: uptime -s | awk '{ print $1 }'
       register: boot_date
 
-    - name: determine if all devices are unmounted
+    - name: Set the elapsed days since the last reboot
       set_fact:
         elapsed_days: "{{ boot_date.stdout_lines[0] | calculate_elapsed_days }}"
 
