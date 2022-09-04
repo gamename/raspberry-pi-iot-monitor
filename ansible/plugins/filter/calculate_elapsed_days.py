@@ -14,7 +14,8 @@ def calculate_elapsed_days(date_stamp):
     # print("date_stamp:", date_stamp)
     today = datetime.date.today()
     sample_date = datetime.date.fromisoformat(date_stamp)
-    delta = sample_date - today
+    delta = today - sample_date
+    # print("delta:", delta.days)
     return delta.days
 
 
@@ -35,6 +36,7 @@ def test_calculate_elapsed_days():
     :return: Nothing
     """
     assert( calculate_elapsed_days(datetime.date.today().isoformat()) == 0)
+    assert( calculate_elapsed_days("2022-08-01") > 30)
 
 
 if __name__ == "__main__":
