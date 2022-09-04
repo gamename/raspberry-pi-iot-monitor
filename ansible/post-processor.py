@@ -21,10 +21,10 @@ for file in sorted(json_files):
     with open(file) as f:
         data = json.load(f)
         host_dict['host_name'] = data['ansible_nodename']
-        host_dict['boot_date'] = data['boot_date']
-        host_dict['core_temperature'] = data['core_temperature']
-        host_dict['cpu_average'] = data['cpu_average']
-        host_dict['disk_utilization'] = data['disk_utilization']
+        host_dict['boot_date'] = data['boot_date'][0]
+        host_dict['core_temperature'] = data['core_temperature'][0]
+        host_dict['cpu_average'] = data['cpu_average'][0]
+        host_dict['disk_utilization'] = data['disk_utilization'][0]
         hosts.append(host_dict)
 
 
