@@ -5,10 +5,10 @@
   gather_facts: false
   become: false
   vars:
-      max_temperature: '60'
-      max_days_since_last_reboot: '2'
-      max_cpu_utilization: '0'
-      max_disk_utilization: '2'
+      max_temperature: '80'
+      max_days_since_last_reboot: '7'
+      max_cpu_utilization: '80'
+      max_disk_utilization: '50'
 
   tasks:
 
