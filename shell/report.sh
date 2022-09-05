@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cd ../ansible
-
+cd "${HOME}/raspberry-pi-iot-monitor/ansible"
 ansible-playbook gather-telemetry.yaml | grep -E "RPIERROR:.*$" -E 'fatal:.[^=]*' -o |
 while read line; do
   python3 "${HOME}/raspberry-pi-iot-monitor/iot/notify.py" \
@@ -10,6 +9,6 @@ while read line; do
   --cert "${HOME}/pi-monitor.cert.pem" \
   --key "${HOME}/pi-monitor.private.key" \
   --topic "tns/bot/pi-monitor" \
-  --message "${line}"
+  --message "MSG003: ${line}"
 done
 
