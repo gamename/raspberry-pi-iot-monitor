@@ -64,6 +64,6 @@
 
     - name: Determine if we exceeded max disk utilization
       ansible.builtin.debug:
-        msg: "RPIERROR: {{inventory_hostname}} disk utilization ({{ disk_util.stdout_lines[0] }}) exceeds limit {{ max_disk_utilization}}"
-      when: disk_util.stdout_lines[0] > max_disk_utilization
+        msg: "RPIERROR: {{inventory_hostname}} disk utilization ({{ disk_util.stdout }}) exceeds limit {{ max_disk_utilization}}"
+      when: disk_util.stdout > max_disk_utilization
 
