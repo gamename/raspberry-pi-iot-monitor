@@ -5,6 +5,7 @@
   gather_facts: false
   become: false
   vars:
+      # Modify the following values to meet your requirements.
       max_temperature: '80'
       max_days_since_last_reboot: '7'
       max_cpu_utilization: '80'
@@ -13,20 +14,24 @@
   tasks:
 
     # Temperature Processing
+    # We run a command to get the on-board temperature and then extract only the leading 2 digits.
     - name: Get on-board temperature
       shell: vcgencmd measure_temp | grep --only-matching --extended-regexp "[0-9]{2}"
       register: temp
 
+    # If the value exeeds the variable 'max_temperature', then put an error message in the log.
     - name: Determine if the temperature is correct
       ansible.builtin.debug:
         msg: "RPIERROR: {{inventory_hostname}} exceeded temperature limit {{ temp.stdout_lines[0]}}"
       when: temp.stdout_lines[0] > max_temperature
 
     # Uptime Processing
+    # We get he 'uptime' of the system and save it to a variable called 'boot_date'
     - name: Get uptime
       shell: uptime -s | awk '{ print $1 }'
       register: boot_date
 
+    # We take that variable and convert it to elapsed days using a simple plugin script.
     - name: Set the elapsed days since the last reboot
       set_fact:
         elapsed_days: "{{ boot_date.stdout_lines[0] | calculate_elapsed_days }}"
@@ -37,6 +42,7 @@
       when: elapsed_days > max_days_since_last_reboot
 
     # CPU Utilization
+    # We grab the CPU utilization from the 'uptime' display and capture the leading digits of the last value on the line
     - name: Get cpu average
       shell: uptime | awk '{print $NF}' | cut -d'.' -f1
       register: cpu_avg
@@ -47,6 +53,7 @@
       when: cpu_avg.stdout_lines[0] > max_cpu_utilization
 
     # Disk Utilization
+    # We capture the disk usage from the 'df' command.
     - name: Get disk utilization
       shell: df --human-readable --output=pcent . | tail -1 | grep --only-matching --extended-regexp "[0-9]+"
       register: disk_util

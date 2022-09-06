@@ -1,0 +1,2 @@
+This script is responsible for sending messages to AWS which are converted into text messages sent to a cell phone. It
+does not run continuously.  Instead, one invocation of this script will be used to send one message. 

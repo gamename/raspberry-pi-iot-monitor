@@ -1,0 +1,1 @@
+This script triggers the whole process.  Invoke it manually, or via a cron job.
