@@ -22,7 +22,7 @@
     # If the value exceeds the variable 'max_temperature', then put an error message in the log.
     - name: Determine if the temperature is correct
       ansible.builtin.debug:
-        msg: "RPIERROR: {{inventory_hostname}} temperature ({{ temp.stdout_lines[0]}}) exceeds limit {{ max_temperature }} "
+        msg: "RPIERROR: {{inventory_hostname}} temperature ({{ temp.stdout_lines[0]}}) exceeds limit {{ max_temperature }}"
       when: temp.stdout_lines[0] > max_temperature
 
     # Uptime Processing
@@ -38,7 +38,7 @@
 
     - name: Determine if we have not rebooted lately
       ansible.builtin.debug:
-        msg: "RPIERROR: {{inventory_hostname}} days since last reboot ({{ elapsed_days}}) exceeds limit {{ max_days_since_last_reboot }} "
+        msg: "RPIERROR: {{inventory_hostname}} days since last reboot ({{ elapsed_days}}) exceeds limit {{ max_days_since_last_reboot }}"
       when: elapsed_days > max_days_since_last_reboot
 
     # CPU Utilization
@@ -49,7 +49,7 @@
 
     - name: Determine if our cpu average usage is acceptable
       ansible.builtin.debug:
-        msg: "RPIERROR: {{inventory_hostname}} cpu utilization ({{ cpu_avg.stdout_lines[0] }}) exceeds limit {{ max_cpu_utilization}} "
+        msg: "RPIERROR: {{inventory_hostname}} cpu utilization ({{ cpu_avg.stdout_lines[0] }}) exceeds limit {{ max_cpu_utilization}}"
       when: cpu_avg.stdout_lines[0] > max_cpu_utilization
 
     # Disk Utilization
@@ -58,8 +58,12 @@
       shell: df --human-readable --output=pcent . | tail -1 | grep --only-matching --extended-regexp "[0-9]+"
       register: disk_util
 
+    - name: show disk usage output
+      debug:
+        var: disk_util
+
     - name: Determine if we exceeded max disk utilization
       ansible.builtin.debug:
-        msg: "RPIERROR: {{inventory_hostname}} disk utilization ({{ disk_util.stdout_lines[0] }}) exceeds limit {{ max_disk_utilization}} "
+        msg: "RPIERROR: {{inventory_hostname}} disk utilization ({{ disk_util.stdout_lines[0] }}) exceeds limit {{ max_disk_utilization}}"
       when: disk_util.stdout_lines[0] > max_disk_utilization
 
