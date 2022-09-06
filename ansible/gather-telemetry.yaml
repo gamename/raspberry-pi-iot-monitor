@@ -28,7 +28,7 @@
     # Uptime Processing
     # We get he 'uptime' of the system and save it to a variable called 'boot_date'
     - name: Get uptime
-      shell: uptime -s | awk '{ print $1 }'
+      shell: uptime --since | awk '{ print $1 }'
       register: boot_date
 
     # We take that variable and convert it to elapsed days using a simple plugin script.
