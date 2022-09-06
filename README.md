@@ -1,5 +1,12 @@
 
 # Table of Contents
+  - [Overview](#overview)
+  - [Technical Description](#technical-description)
+  - [Design Diagram](#design-diagram)
+  - [Sequence of Events](#sequence-of-events)
+  - [Installation](#installation)
+    - [Ansible Prep](#ansible-prep)
+  - [FAQ](#faq)
 <br><br>
 # Overview
 I've accumulated quite a farm of Raspberry Pis over the years.  One problem is making sure 
