@@ -1,8 +1,3 @@
-import board
-import RPi.GPIO as GPIO
-import paho.mqtt.client as mqtt
-import time
-
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import logging
 import time
