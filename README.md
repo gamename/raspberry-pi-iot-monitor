@@ -113,7 +113,14 @@ office-clock.local | SUCCESS => {
     "ping": "pong"
 }
 ```
+### Amazon IoT Setup
+1. Look at the writeup [here](https://github.com/gamename/raspberry-pi-iot-cat-doorbell) to configure the Amazon IoT setup.
 
+### Cron Job Setup
+1. Run this command on the broker command line *after* you read the README.md file in the same `cron` directory.
+```bash
+crontab report_cron_job
+```
 # FAQ
 Q. Why not use MQTT to connect to the different Raspberry Pis?<br>
 A. That is one possible solution.  But it requires a continuously running script in each RPi. So you have to configure
