@@ -23,7 +23,7 @@
     - name: Determine if the temperature is correct
       ansible.builtin.debug:
         msg: "RPIERROR: {{inventory_hostname}} temperature ({{ temp.stdout}}) exceeds limit {{ max_temperature }}"
-      when: temp.stdout | int > max_temperature
+      when: temp.stdout > max_temperature
 
     # Uptime Processing
     # We get he 'uptime' of the system and save it to a variable called 'boot_date'
@@ -39,7 +39,7 @@
     - name: Determine if we have not rebooted lately
       ansible.builtin.debug:
         msg: "RPIERROR: {{inventory_hostname}} days since last reboot ({{ elapsed_days}}) exceeds limit {{ max_days_since_last_reboot }}"
-      when: elapsed_days | int > max_days_since_last_reboot
+      when: elapsed_days > max_days_since_last_reboot
 
     # CPU Utilization
     # We grab the CPU utilization from the 'uptime' display and capture the leading digits of the last value on the line
@@ -50,7 +50,7 @@
     - name: Determine if our cpu average usage is acceptable
       ansible.builtin.debug:
         msg: "RPIERROR: {{inventory_hostname}} cpu utilization ({{ cpu_avg.stdout }}%) exceeds limit {{ max_cpu_utilization}}%"
-      when: cpu_avg.stdout | int > max_cpu_utilization
+      when: cpu_avg.stdout > max_cpu_utilization
 
     # Disk Utilization
     # We capture the disk usage from the 'df' command.
@@ -65,5 +65,5 @@
     - name: Determine if we exceeded max disk utilization
       ansible.builtin.debug:
         msg: "RPIERROR: {{inventory_hostname}} disk utilization ({{ disk_util.stdout }}%) exceeds limit {{ max_disk_utilization}}%"
-      when: disk_util.stdout | int > max_disk_utilization
+      when: disk_util.stdout > max_disk_utilization
 
