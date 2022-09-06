@@ -44,7 +44,7 @@
     # CPU Utilization
     # We grab the CPU utilization from the 'uptime' display and capture the leading digits of the last value on the line
     - name: Get cpu average
-      shell: uptime | awk '{print $NF}' | cut -d'.' -f1
+      shell: uptime | awk '{print $NF}' | cut --delimiter='.' --fields=1
       register: cpu_avg
 
     - name: Determine if our cpu average usage is acceptable
