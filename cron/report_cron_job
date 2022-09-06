@@ -1,0 +1,1 @@
+0 */6 * * * ~/raspberry_pi_iot_monitor/shell/report.sh &
