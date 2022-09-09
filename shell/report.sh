@@ -17,7 +17,7 @@ if [ -z "${gather_out}" ]; then
     --key "${HOME}/pi-monitor.private.key" \
     --clientId "monitor" \
     --topic "tns/bot/pi-monitor" \
-    --message "MSG003: Fivers"
+    --message "MSG004: Fivers"
 else
   echo "${gather_out}" | while read line; do
     python3 "${HOME}/raspberry-pi-iot-monitor/iot/notify.py" \
