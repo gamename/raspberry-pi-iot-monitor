@@ -5,5 +5,6 @@ python3 "${HOME}/raspberry-pi-iot-monitor/iot/notify.py" \
   --rootCA "${HOME}/root-CA.crt" \
   --cert "${HOME}/pi-monitor.cert.pem" \
   --key "${HOME}/pi-monitor.private.key" \
+  --clientId "monitor" \
   --topic "tns/bot/pi-monitor" \
   --message "MSG003: TEST message"
