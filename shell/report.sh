@@ -15,6 +15,7 @@ if [ -z "${gather_out}" ]; then
     --rootCA "${HOME}/root-CA.crt" \
     --cert "${HOME}/pi-monitor.cert.pem" \
     --key "${HOME}/pi-monitor.private.key" \
+    --clientId "monitor" \
     --topic "tns/bot/pi-monitor" \
     --message "MSG003: Fivers"
 else
@@ -24,6 +25,7 @@ else
       --rootCA "${HOME}/root-CA.crt" \
       --cert "${HOME}/pi-monitor.cert.pem" \
       --key "${HOME}/pi-monitor.private.key" \
+      --clientId "monitor" \
       --topic "tns/bot/pi-monitor" \
       --message "MSG003: ${line}"
   done
