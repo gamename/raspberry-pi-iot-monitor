@@ -4,10 +4,10 @@
 # fatal ansible-related errors. In either case, we then call the notify.py script to forward that info to AWS where
 # it can be converted to a text message and sent to my cell phone.
 #
-source $HOME/.ssh/agent-environment
+source ${HOME}/.ssh/agent-environment
 cd "${HOME}/raspberry-pi-iot-monitor/ansible"
 gather_out=$(ansible-playbook gather-telemetry.yaml |
-             grep --only-matching --extended-regexp "RPIERROR:.*$|fatal:.[^=]*" )
+             grep --only-matching --extended-regexp "RPIERROR:.*$|fatal:.[^=]*")
 
 if [ -z "${gather_out}" ]; then
   python3 "${HOME}/raspberry-pi-iot-monitor/iot/notify.py" \
