@@ -3,7 +3,7 @@
 - name: Gather Raspberry Pi telemetry
   hosts: all
   gather_facts: false
-  become: false
+  become: true
   vars:
       # Modify the following values to meet your requirements.
       max_temperature: 75
